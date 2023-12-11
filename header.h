@@ -3,6 +3,11 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <sys/types.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include <string.h>
+#include <ctype.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -15,6 +20,8 @@
  */
 #define UNUSED(x) (void)(x)
 #define MAX_COMMAND 250
+#define MAX_LINE_LENGTH 1024
+
 typedef struct stack_s
 {
 	int n;
@@ -40,9 +47,6 @@ typedef struct instruction_s
 
 
 /******* FUNCTIONS *******/
-char **read_file(const char *file_path);
-
-
 
 
 #endif
