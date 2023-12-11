@@ -13,6 +13,8 @@
  * Description: doubly linked list node structure
  * for stack, queues, LIFO, FIFO
  */
+#define UNUSED(x) (void)(x)
+#define MAX_COMMAND 250
 typedef struct stack_s
 {
 	int n;
@@ -35,3 +37,12 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+
+
+/******* FUNCTIONS *******/
+char **read_file(const char *file_path);
+
+
+
+
+#endif
