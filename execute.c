@@ -13,11 +13,10 @@ int execute(char *line, stack_t **stack, unsigned int count)
     char *command = strtok(line, " \n\t");
     char *arg;
     int i = 0;
-
-    if (!command)
+    if (command == NULL)
         return (0);
     arg = strtok(NULL, " \n\t");
-    UNUSED (arg);
+    bus.arg = arg;
     while (func[i].opcode)
     {
         if (strcmp(func[i].opcode, command) == 0)
@@ -30,11 +29,10 @@ int execute(char *line, stack_t **stack, unsigned int count)
 
     if (func[i].opcode == NULL)
     {
-        fprintf(stderr, "Line %d: Unknown function %s", count, command);
+        fprintf(stderr, "L%d: unknown instruction %s", count, command);
         free(bus.file);
         free(line);
         exit(EXIT_FAILURE);
     }
-    
     return (0);
 }
