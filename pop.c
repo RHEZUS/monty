@@ -9,13 +9,12 @@
 
 void pop(stack_t **stack, unsigned int line_number)
 {
-    stack_t *head;
+    stack_t *head = *stack;
     if (head == NULL)
     {
-        fprintf(stderr, "L%d: can't pop an empty stack\n", counter);
+        fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
         cleanup_and_exit();
     }
-    head = *stack;
     *stack = head->next;
-    free(head)
+    free(head);
 }

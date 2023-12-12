@@ -8,7 +8,10 @@ int execute(char *line, stack_t **stack, unsigned int count)
     {
         {"push", push}, {"pall", pall},
         {"pint", pint}, {"pop", pop},
-        {"swap", swap}, {NULL, NULL}
+        {"swap", swap}, {"add", add},
+        {"sub", sub}, {"f_div", f_div},
+        {"mul", mul}, {"mod", mod},
+        {NULL, NULL}
     };
     char *command = strtok(line, " \n\t");
     char *arg;
