@@ -18,6 +18,6 @@ void pall(stack_t **stack, unsigned int line_number)
     while (head)
     {
         printf("%d\n", head->n);
-        head = head->next
+        head = head->next;
     }    
 }

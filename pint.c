@@ -17,7 +17,7 @@ void pint(stack_t **stack, unsigned int line_number)
     printf("%d\n", (*stack)->n);
 }
 
-void cleanup_and_exit(void)
+void cleanup_and_exit()
 {
     free(bus.file);
     free(bus.line);

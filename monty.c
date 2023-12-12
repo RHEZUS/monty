@@ -14,7 +14,7 @@ int main(int argc, char const *argv[])
     FILE *file;
     char *line = NULL;
     size_t len = 0;
-    int counter = 1;
+    int counter = 0;
     ssize_t read;
     stack_t *stack = NULL;
 
