@@ -9,6 +9,10 @@
 #include <string.h>
 #include <ctype.h>
 
+#define UNUSED(x) (void)(x)
+#define MAX_COMMAND 250
+#define MAX_LINE_LENGTH 1024
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -18,10 +22,6 @@
  * Description: doubly linked list node structure
  * for stack, queues, LIFO, FIFO
  */
-#define UNUSED(x) (void)(x)
-#define MAX_COMMAND 250
-#define MAX_LINE_LENGTH 1024
-
 typedef struct stack_s
 {
 	int n;
@@ -44,9 +44,23 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+typedef struct bus_s
+{
+	char *arg;
+	FILE *file;
+	char *line;
+	int is_stack;
+} bus_t;
+
+extern bus_t bus;
 
 
 /******* FUNCTIONS *******/
-
+int execute(char *line, stack_t **stack, unsigned int line_number);
+void push(stack_t **stack, unsigned int line_number);
+void pall(stack_t **stack, unsigned int line_number);
+void pin(stack_t **stack, unsigned int line_number);
+void pop(stack_t **stack, unsigned int line_number);
+void swap(stack_t **stack, unsigned int line_number);
 
 #endif
