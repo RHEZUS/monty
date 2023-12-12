@@ -1,4 +1,6 @@
-#include "header.h"
+#include "monty.h"
+
+bus_t bus = {NULL, NULL, NULL, 0};
 
 /**
  * main - entry point
@@ -8,13 +10,13 @@
  */
 int main(int argc, char const *argv[])
 {
-    /*UNUSED(argv);*/
-    char *commands[MAX_COMMAND];
+
     FILE *file;
     char *line = NULL;
     size_t len = 0;
-    int i = 0;
+    int counter = 0;
     ssize_t read;
+    stack_t *stack = NULL;
 
     if (argc != 2)
     {
@@ -28,22 +30,19 @@ int main(int argc, char const *argv[])
         fprintf(stderr,"Error: Can't open file <%s>", argv[1]);
         exit(EXIT_FAILURE);
     }
+    bus.file = file;
 
     while ((read = getline(&line, &len, file)) != -1)
     {
-        commands[i] = line;
-        i++;
+        /*printf("%s", line);*/
+        counter++;
+        bus.line = line;
+        execute(line, &stack, counter);
     }
 
-    commands[i] = NULL;
     fclose(file);
-
-    for (i = 0; commands[i] != NULL; i++)
-    {
-        printf("%s", commands[i]);
-    }
-
     if (line)
         free(line);
+
     return 0;
 }
