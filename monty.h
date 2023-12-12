@@ -61,6 +61,8 @@ void add_node(stack_t **head, int n);
 void cleanup_and_exit(void);
 
 
+
+void nop(stack_t **stack, unsigned int line_number);
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
