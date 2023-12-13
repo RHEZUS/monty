@@ -24,14 +24,18 @@ void push(stack_t **stack, unsigned int line_number)
 		{
 			fprintf(stderr, "L%d: usage: push integer\n", line_number);
 			free_stack(*stack);
-			cleanup_and_exit();
+			fclose(bus.file);
+			free(bus.line);
+			exit(EXIT_FAILURE);
 		}
 	}
 	else
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		free_stack(*stack);
-		cleanup_and_exit();
+		fclose(bus.file);
+		free(bus.line);
+		exit(EXIT_FAILURE);
 	}
 	n = atoi(bus.arg);
 

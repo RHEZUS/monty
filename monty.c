@@ -40,10 +40,11 @@ int main(int argc, char const *argv[])
 		counter++;
 		if (read > 0)
 			execute(line, &stack, counter);
+		free(line);
 	}
 
 	free_stack(stack);
-	cleanup_and_exit();
+	fclose(bus.file);
 	return (0);
 }
 
