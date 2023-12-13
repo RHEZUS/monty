@@ -3,5 +3,6 @@ push 3
 pall
 push 4
 push 5
-push
+nop
+pall
 6

@@ -11,6 +11,7 @@ int execute(char *line, stack_t **stack, unsigned int count)
         {"swap", swap}, {"add", add},
         {"sub", sub}, {"f_div", f_div},
         {"mul", mul}, {"mod", mod},
+        {"#", nop}, {"nop", nop},
         {NULL, NULL}
     };
     char *command = strtok(line, " \n\t");
@@ -33,9 +34,8 @@ int execute(char *line, stack_t **stack, unsigned int count)
     if (func[i].opcode == NULL)
     {
         fprintf(stderr, "L%d: unknown instruction %s", count, command);
-        free(bus.file);
-        free(line);
-        exit(EXIT_FAILURE);
+        free_stack(*stack);
+        cleanup_and_exit();
     }
     return (0);
 }

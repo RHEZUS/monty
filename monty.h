@@ -59,8 +59,7 @@ extern bus_t bus;
 int execute(char *line, stack_t **stack, unsigned int line_number);
 void add_node(stack_t **head, int n);
 void cleanup_and_exit(void);
-
-
+void free_stack(stack_t *head);
 
 void nop(stack_t **stack, unsigned int line_number);
 void push(stack_t **stack, unsigned int line_number);

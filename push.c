@@ -15,18 +15,15 @@ void push(stack_t **stack, unsigned int line_number)
         if (flag == 1)
         {   
             fprintf(stderr, "L%d: usage: push integer\n", line_number);
-            fclose(bus.file);
-            free(bus.line);
-            /*free_stack(stack)*/
-            exit(EXIT_FAILURE); 
+            free_stack(*stack);
+            cleanup_and_exit();
         }
     }
     else
     { 
         fprintf(stderr, "L%d: usage: push integer\n", line_number);
-        fclose(bus.file);
-        free(bus.line);
-        exit(EXIT_FAILURE); 
+        free_stack(*stack);
+        cleanup_and_exit();
     }
     n = atoi(bus.arg);
     if (bus.is_stack == 0)
