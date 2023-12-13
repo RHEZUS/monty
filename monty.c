@@ -40,12 +40,9 @@ int main(int argc, char const *argv[])
 		execute(line, &stack, counter);
 	}
 
-	if (fclose(file) != 0)
-	{
-		fprintf(stderr, "Error: Failed to close the file.\n");
-		free_stack(stack);
-		cleanup_and_exit();
-	}
+
+	free_stack(stack);
+	cleanup_and_exit();
 	return (0);
 }
 

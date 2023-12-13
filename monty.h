@@ -69,6 +69,7 @@ void add_node(stack_t **head, int n);
 void cleanup_and_exit(void);
 void free_stack(stack_t *head);
 char *handle_comment(char *str);
+
 void nop(stack_t **stack, unsigned int line_number);
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
@@ -80,6 +81,11 @@ void sub(stack_t **stack, unsigned int line_number);
 void f_div(stack_t **stack, unsigned int line_number);
 void mul(stack_t **stack, unsigned int line_number);
 void mod(stack_t **stack, unsigned int line_number);
+<<<<<<< HEAD
 void rotl(stack_t **stack, unsigned int line_number);
+=======
+void pchar(stack_t **stack, unsigned int line_number);
+void pstr(stack_t **stack, unsigned int line_number);
+>>>>>>> 0744260c5066e46c6daec818e91fb925a936d6f0
 
 #endif
