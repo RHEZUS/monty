@@ -24,7 +24,7 @@ void pint(stack_t **stack, unsigned int line_number)
 
 void cleanup_and_exit(void)
 {
-	if (fclose( bus.file) != 0)
+	if (fclose(bus.file) != 0)
 		fprintf(stderr, "Unable to close the file");
 
 	if (bus.line != NULL)
