@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * f_div - divs the top two elements of the stack.
+ * _div - divs the top two elements of the stack.
  * @stack: stack head
  * @line_number: line_number
  * Return: nothing
@@ -9,7 +9,7 @@
 
 void _div(stack_t **stack, unsigned int line_number)
 {
-	stack_t *head;;
+	stack_t *head;
 	int len = 0, result = 0;
 
 	head = *stack;

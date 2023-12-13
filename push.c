@@ -34,7 +34,7 @@ void push(stack_t **stack, unsigned int line_number)
 		cleanup_and_exit();
 	}
 	n = atoi(bus.arg);
-	
+
 	if (bus.status == STACK)
 		add_node(stack, n);
 	else
