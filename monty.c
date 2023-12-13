@@ -14,7 +14,7 @@ int main(int argc, char const *argv[])
 	FILE *file;
 	char *line = NULL;
 	size_t len = 0;
-	int counter = 0, i = 0;
+	int counter = 0;
 	ssize_t read;
 	stack_t *stack = NULL;
 
@@ -35,11 +35,7 @@ int main(int argc, char const *argv[])
 	while ((read = getline(&line, &len, file)) != -1)
 	{
 		counter++;
-		for (i = 0; line[i] != '\0'; i++)
-		{
-			if (line[i] == '#')
-				line[i] = '\0';
-		}
+		line = handle_comment(line);
 		bus.line = line;
 		execute(line, &stack, counter);
 	}
