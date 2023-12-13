@@ -10,8 +10,8 @@
 #include <ctype.h>
 
 #define UNUSED(x) (void)(x)
-#define MAX_COMMAND 250
-#define MAX_LINE_LENGTH 1024
+#define STACK 0
+#define QUEUE 1
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -57,7 +57,7 @@ typedef struct bus_s
 	char *arg;
 	FILE *file;
 	char *line;
-	int is_stack;
+	int status;
 } bus_t;
 
 extern bus_t bus;
@@ -79,7 +79,7 @@ void pop(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);
 void sub(stack_t **stack, unsigned int line_number);
-void f_div(stack_t **stack, unsigned int line_number);
+void _div(stack_t **stack, unsigned int line_number);
 void mul(stack_t **stack, unsigned int line_number);
 void mod(stack_t **stack, unsigned int line_number);
 void rotl(stack_t **stack, unsigned int line_number);
@@ -87,6 +87,6 @@ void rotr(stack_t **stack, unsigned int line_number);
 void pchar(stack_t **stack, unsigned int line_number);
 void pstr(stack_t **stack, unsigned int line_number);
 void queue(stack_t **stack, unsigned int line_number);
-void f_stack(stack_t **stack, unsigned int line_number);
+void _stack(stack_t **stack, unsigned int line_number);
 
 #endif

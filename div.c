@@ -7,12 +7,12 @@
  * Return: nothing
  */
 
-void f_div(stack_t **stack, unsigned int line_number)
+void _div(stack_t **stack, unsigned int line_number)
 {
-	stack_t *head = *stack;
-	int len = 0, sum = 0;
+	stack_t *head;;
+	int len = 0, result = 0;
 
-
+	head = *stack;
 	while (head)
 	{
 		head = head->next;
@@ -35,8 +35,8 @@ void f_div(stack_t **stack, unsigned int line_number)
 		cleanup_and_exit();
 	}
 
-	sum = head->next->n / head->n;
-	head->next->n = sum;
+	result = head->next->n / head->n;
+	head->next->n = result;
 	*stack = head->next;
 	free(head);
 }

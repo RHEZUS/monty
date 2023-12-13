@@ -15,10 +15,10 @@ int execute(char *line, stack_t **stack, unsigned int count)
 		{"push", push}, {"pall", pall},
 		{"pint", pint}, {"pop", pop},
 		{"swap", swap}, {"add", add},
-		{"sub", sub}, {"f_div", f_div},
+		{"sub", sub}, {"f_div", _div},
 		{"mul", mul}, {"mod", mod},
 		{"nop", nop}, {"pchar",  pchar},
-		{"pstr", pstr}, {"stack", f_stack},
+		{"pstr", pstr}, {"stack", _stack},
 		{"queue", queue}, {"rotl", rotl},
 		{"rotr", rotr}, {NULL, NULL},
 	};
@@ -26,11 +26,11 @@ int execute(char *line, stack_t **stack, unsigned int count)
 	char *arg;
 	int i = 0;
 
-	if (command == NULL)
+	if (command && command[0] == '#')
 		return (0);
 	arg = strtok(NULL, " \n\t");
 	bus.arg = arg;
-	while (func[i].opcode)
+	while (func[i].opcode && command)
 	{
 		if (strcmp(func[i].opcode, command) == 0)
 		{
@@ -40,12 +40,12 @@ int execute(char *line, stack_t **stack, unsigned int count)
 		i++;
 	}
 
-	if (func[i].opcode == NULL)
+	if (command && func[i].opcode == NULL)
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n", count, command);
 		free_stack(*stack);
 		cleanup_and_exit();
 	}
-	return (0);
+	return (1);
 }
 

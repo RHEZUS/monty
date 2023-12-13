@@ -7,10 +7,10 @@
  * Return: nothing
  */
 
-void f_stack(stack_t **stack, unsigned int line_number)
+void _stack(stack_t **stack, unsigned int line_number)
 {
 	(void)stack;
 	(void)line_number;
-	bus.is_stack = 0;
+	bus.status = STACK;
 }
 

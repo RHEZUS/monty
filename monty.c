@@ -35,7 +35,6 @@ int main(int argc, char const *argv[])
 	while ((read = getline(&line, &len, file)) != -1)
 	{
 		counter++;
-		line = handle_comment(line);
 		bus.line = line;
 		execute(line, &stack, counter);
 	}

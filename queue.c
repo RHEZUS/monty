@@ -11,6 +11,6 @@ void queue(stack_t **stack, unsigned int line_number)
 {
 	(void)stack;
 	(void)line_number;
-	bus.is_stack = 1;
+	bus.status = QUEUE;
 }
 
