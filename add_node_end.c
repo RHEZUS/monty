@@ -7,27 +7,30 @@
 */
 void add_node_end(stack_t **stack, int n)
 {
-	stack_t *new_node = malloc(sizeof(stack_t));
-	stack_t *head = *stack;
+	stack_t *new_node, *head;
 
+	head = *stack;
+	new_node = malloc(sizeof(stack_t));
 	if (new_node == NULL)
 	{
-		fprintf(stderr, "Error\n");
-		exit(EXIT_FAILURE);
+		printf("Error\n");
 	}
 	new_node->n = n;
 	new_node->next = NULL;
-
-	if ((*stack) == NULL)
+	if (head)
 	{
-		new_node->prev = NULL;
-		(*stack) = new_node;
+		while (head->next)
+			head = head->next;
 	}
-
-	while (head->next != NULL)
-		head = head->next;
-
-	head->next = new_node;
-	new_node->prev = head;
+	if (!head)
+	{
+		*stack = new_node;
+		new_node->prev = NULL;
+	}
+	else
+	{
+		head->next = new_node;
+		new_node->prev = head;
+	}
 }
 
