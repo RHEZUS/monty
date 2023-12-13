@@ -13,19 +13,9 @@ void pint(stack_t **stack, unsigned int line_number)
 	{
 		fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
 		free_stack(*stack);
-		cleanup_and_exit();
+		fclose(bus.file);
+		free(bus.line);
+		exit(EXIT_FAILURE);
 	}
 	printf("%d\n", (*stack)->n);
-}
-
-/**
- * cleanup_and_exit - exits from the program
- */
-
-void cleanup_and_exit(void)
-{
-	if (fclose(bus.file) != 0)
-		fprintf(stderr, "Unable to close the file");
-
-	exit(EXIT_FAILURE);
 }

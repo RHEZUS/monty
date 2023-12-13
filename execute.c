@@ -44,7 +44,9 @@ int execute(char *line, stack_t **stack, unsigned int count)
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n", count, command);
 		free_stack(*stack);
-		cleanup_and_exit();
+		fclose(bus.file);
+		free(bus.line);
+		exit(EXIT_FAILURE);
 	}
 	return (1);
 }
