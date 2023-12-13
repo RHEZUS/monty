@@ -43,6 +43,7 @@ int main(int argc, char const *argv[])
 	if (fclose(file) != 0)
 	{
 		fprintf(stderr, "Error: Failed to close the file.\n");
+		free_stack(stack);
 		cleanup_and_exit();
 	}
 	return (0);
