@@ -1,9 +1,9 @@
 #include "monty.h"
 
 /**
- * queue - multiplies the top two elements of the stack.
- * @stack: stack head
- * @line_number: line_number
+ * queue - add a new new node to the queue.
+ * @stack: the head of the stack
+ * @line_number: the file's line
  * Return: nothing
  */
 

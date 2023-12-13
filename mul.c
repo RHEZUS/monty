@@ -2,8 +2,8 @@
 
 /**
  * mul - multiplies the top two elements of the stack.
- * @stack: stack head
- * @line_number: line_number
+ * @stack: the head of the stack
+ * @line_number: the file's line
  * Return: nothing
  */
 

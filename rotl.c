@@ -2,9 +2,9 @@
 
 /**
  * rotl - rotates the stack to the top.
- * @stack: stack header
- * @line_number: line number
- * Return: 0
+ * @stack: the head of the stack
+ * @line_number: the file's line
+ * Return: nothing
  */
 
 void rotl(stack_t **stack, unsigned int line_number)

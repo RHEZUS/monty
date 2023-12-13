@@ -1,10 +1,10 @@
 #include "monty.h"
 
 /**
- * pstr - prints all the values on the stack, from the top.
- * @stack: stack header
- * @line_number: line number
- * Return: 0
+ * pstr - prints all the values in the stack in Ascii.
+ * @stack: the head of the stack
+ * @line_number: the file's line
+ * Return: nothing
 */
 
 void pstr(stack_t **stack, unsigned int line_number)

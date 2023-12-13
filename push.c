@@ -2,9 +2,9 @@
 
 /**
  * push - adds a new node to the stack or a queue
- * @stack: stack head
- * @line_number: line_number
- * Return: no return
+ * @stack: the head of the stack
+ * @line_number: the file's line
+ * Return: nothing
 */
 
 void push(stack_t **stack, unsigned int line_number)
