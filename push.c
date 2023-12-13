@@ -36,7 +36,6 @@ void push(stack_t **stack, unsigned int line_number)
 	if (bus.is_stack == 0)
 		add_node(stack, n);
 	else
-		printf("It is a que");
-	add_node_end(stack, n);
+		add_node_end(stack, n);
 }
 
