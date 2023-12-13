@@ -9,21 +9,21 @@
 
 void rotl(stack_t **stack, unsigned int line_number)
 {
-    if (*stack == NULL || (*stack)->next == NULL)
-    {
-        return;
-    }
-    stack_t *new_stack = (*stack)->next;
-    new_stack->prev = NULL;
+    stack_t *tmp = *stack, *head;
 
-    stack_t *head = *stack;
-    while (head->next != NULL)
-    {
-        head = head->next;
-    }
-    head->next = *stack;
-    (*stack)->next = NULL;
-    (*stack)->prev = head;
-
-    *stack = new_stack;
+    UNUSED(line_number);
+	if (*stack == NULL || (*stack)->next == NULL)
+	{
+		return;
+	}
+	head = (*stack)->next;
+	head->prev = NULL;
+	while (tmp->next != NULL)
+	{
+		tmp = tmp->next;
+	}
+	tmp->next = *stack;
+	(*stack)->next = NULL;
+	(*stack)->prev = tmp;
+	(*stack) = head;
 }

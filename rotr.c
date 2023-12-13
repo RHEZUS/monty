@@ -9,22 +9,21 @@
 
 void rotr(stack_t **stack, unsigned int line_number)
 {
-    stack_t *cpy_stack;
+    stack_t *copy;
 
-    cpy_stack = *stack;
-    if (*stack == NULL || (*stack)->next == NULL)
-    {
-        return;
-    }
-    while (cpy_stack->next)
-    {
-        cpy_stack = cpy_stack->next;
-    }
-    cpy_stack->next = *stack;
-
-    cpy_stack->prev->next = NULL;
-    cpy_stack->prev = NULL;
-    (*stack)->prev = cpy_stack;
-
-    (*stack) = cpy_stack;
+    UNUSED (line_number);
+	copy = *stack;
+	if (*stack == NULL || (*stack)->next == NULL)
+	{
+		return;
+	}
+	while (copy->next)
+	{
+		copy = copy->next;
+	}
+	copy->next = *stack;
+	copy->prev->next = NULL;
+	copy->prev = NULL;
+	(*stack)->prev = copy;
+	(*stack) = copy;
 }
