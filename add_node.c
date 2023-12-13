@@ -2,7 +2,7 @@
 /**
  * add_node - add node to the head stack
  * @stack: the head of the stack
- * @line_number: the file's line
+ * @n: the file's line
  * Return: nothing
 */
 void add_node(stack_t **stack, int n)
