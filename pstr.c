@@ -18,10 +18,10 @@ void pstr(stack_t **stack, unsigned int line_number)
 
 	while (head)
 	{
-        if (head->n <= 0 || head->n > 127)
-            break;
+		if (head->n <= 0 || head->n > 127)
+			break;
 		printf("%c", head->n);
 		head = head->next;
 	}
-    putchar('\n');
+	putchar('\n');
 }
