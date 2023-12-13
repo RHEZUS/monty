@@ -9,9 +9,9 @@
 
 void rotl(stack_t **stack, unsigned int line_number)
 {
-    stack_t *tmp = *stack, *head;
+	stack_t *tmp = *stack, *head;
 
-    UNUSED(line_number);
+	UNUSED(line_number);
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
 		return;
@@ -27,3 +27,4 @@ void rotl(stack_t **stack, unsigned int line_number)
 	(*stack)->prev = tmp;
 	(*stack) = head;
 }
+

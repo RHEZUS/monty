@@ -9,9 +9,9 @@
 
 void rotr(stack_t **stack, unsigned int line_number)
 {
-    stack_t *copy;
+	stack_t *copy;
 
-    UNUSED (line_number);
+	UNUSED(line_number);
 	copy = *stack;
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
@@ -27,3 +27,4 @@ void rotr(stack_t **stack, unsigned int line_number)
 	(*stack)->prev = copy;
 	(*stack) = copy;
 }
+
