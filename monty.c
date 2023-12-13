@@ -14,8 +14,8 @@ int main(int argc, char const *argv[])
 	FILE *file;
 	char *line = NULL;
 	size_t len = 0;
-	int counter = 0;
-	ssize_t read;
+	unsigned int counter = 0;
+	ssize_t read = 1;
 	stack_t *stack = NULL;
 
 	if (argc != 2)
@@ -32,13 +32,15 @@ int main(int argc, char const *argv[])
 	}
 	bus.file = file;
 
-	while ((read = getline(&line, &len, file)) != -1)
+	while (read > 0)
 	{
-		counter++;
+		line = NULL;
+		read = getline(&line, &len, file);
 		bus.line = line;
-		execute(line, &stack, counter);
+		counter++;
+		if (read > 0)
+			execute(line, &stack, counter);
 	}
-
 
 	free_stack(stack);
 	cleanup_and_exit();
