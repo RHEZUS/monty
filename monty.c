@@ -6,43 +6,49 @@ bus_t bus = {NULL, NULL, NULL, 0};
  * main - entry point
  * @argc: the number of arguments
  * @argv: the files containing the command
- * Return: always 0 
+ * Return: always 0
  */
 int main(int argc, char const *argv[])
 {
 
-    FILE *file;
-    char *line = NULL;
-    size_t len = 0;
-    int counter = 0;
-    ssize_t read;
-    stack_t *stack = NULL;
+	FILE *file;
+	char *line = NULL;
+	size_t len = 0;
+	int counter = 0, i = 0;
+	ssize_t read;
+	stack_t *stack = NULL;
 
-    if (argc != 2)
-    {
-        fprintf(stderr,  "USAGE: monty file\n");
-        exit(EXIT_FAILURE);
-    }
-    
-    file = fopen(argv[1], "r");
-    if (!file)
-    {
-        fprintf(stderr,"Error: Can't open file <%s>", argv[1]);
-        exit(EXIT_FAILURE);
-    }
-    bus.file = file;
+	if (argc != 2)
+	{
+		fprintf(stderr,  "USAGE: monty file\n");
+		exit(EXIT_FAILURE);
+	}
 
-    while ((read = getline(&line, &len, file)) != -1)
-    {
-        /*printf("%s", line);*/
-        counter++;
-        bus.line = line;
-        execute(line, &stack, counter);
-    }
+	file = fopen(argv[1], "r");
+	if (!file)
+	{
+		fprintf(stderr, "Error: Can't open file <%s>\n", argv[1]);
+		exit(EXIT_FAILURE);
+	}
+	bus.file = file;
 
-    fclose(file);
-    if (line)
-        free(line);
+	while ((read = getline(&line, &len, file)) != -1)
+	{
+		counter++;
+		for (i = 0; line[i] != '\0'; i++)
+		{
+			if (line[i] == '#')
+				line[i] = '\0';
+		}
+		bus.line = line;
+		execute(line, &stack, counter);
+	}
 
-    return 0;
+	if (fclose(file) != 0)
+	{
+		fprintf(stderr, "Error: Failed to close the file.\n");
+		cleanup_and_exit();
+	}
+	return (0);
 }
+

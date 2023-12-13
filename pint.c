@@ -2,25 +2,33 @@
 
 /**
  * pint - prints the value at the top of the stack, followed by a new line.
- * @stack_t: stack header
+ * @stack: stack header
  * @line_number: line number
  * Return: 0
-*/
+ */
 
 void pint(stack_t **stack, unsigned int line_number)
 {
-    if (stack == NULL)
-    {
-        fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
-        free_stack(*stack);
-        cleanup_and_exit();
-    }
-    printf("%d\n", (*stack)->n);
+	if (stack == NULL)
+	{
+		fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
+		free_stack(*stack);
+		cleanup_and_exit();
+	}
+	printf("%d\n", (*stack)->n);
 }
 
-void cleanup_and_exit()
+/**
+ * cleanup_and_exit - exits from the program
+ */
+
+void cleanup_and_exit(void)
 {
-    free(bus.file);
-    free(bus.line);
-    exit(EXIT_FAILURE);
+	if (bus.file != NULL)
+		free(bus.file);
+
+	if (bus.line != NULL)
+		free(bus.line);
+
+	exit(EXIT_FAILURE);
 }

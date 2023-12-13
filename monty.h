@@ -44,6 +44,14 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/**
+ * struct bus_s - variables -args, file, line content
+ * @arg: value
+ * @file: pointer to monty file
+ * @line: line content
+ * @is_stack: flag change stack <-> queue
+ * Description: carries values through the program
+ */
 typedef struct bus_s
 {
 	char *arg;
