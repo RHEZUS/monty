@@ -49,7 +49,7 @@ typedef struct instruction_s
  * @arg: value
  * @file: pointer to monty file
  * @line: line content
- * @is_stack: flag change stack <-> queue
+ * @status: flag change stack <-> queue
  * Description: carries values through the program
  */
 typedef struct bus_s

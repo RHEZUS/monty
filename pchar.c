@@ -2,9 +2,9 @@
 
 /**
  * pchar - prints the value at the top of the stack, followed by a new line.
- * @stack: stack header
- * @line_number: line number
- * Return: 0
+ * @stack: the head of the stack
+ * @line_number: the file's line
+ * Return: nothing
  */
 
 void pchar(stack_t **stack, unsigned int line_number)
