@@ -35,7 +35,6 @@ int main(int argc, char const *argv[])
 	while ((read = getline(&line, &len, file)) != -1)
 	{
 		counter++;
-		line = handle_comment(line);
 		bus.line = line;
 		execute(line, &stack, counter);
 	}
@@ -43,7 +42,6 @@ int main(int argc, char const *argv[])
 	if (fclose(file) != 0)
 	{
 		fprintf(stderr, "Error: Failed to close the file.\n");
-		free_stack(stack);
 		cleanup_and_exit();
 	}
 	return (0);

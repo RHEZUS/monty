@@ -41,7 +41,6 @@ int execute(char *line, stack_t **stack, unsigned int count)
 	if (func[i].opcode == NULL)
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n", count, command);
-		free_stack(*stack);
 		cleanup_and_exit();
 	}
 	return (0);
