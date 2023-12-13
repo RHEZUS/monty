@@ -1,49 +1,51 @@
-#include "header.h"
+#define _GNU_SOURCE
+#include "monty.h"
+bus_t bus = {NULL, NULL, NULL, 0};
 
 /**
  * main - entry point
  * @argc: the number of arguments
  * @argv: the files containing the command
- * Return: always 0 
+ * Return: always 0
  */
 int main(int argc, char const *argv[])
 {
-    /*UNUSED(argv);*/
-    char *commands[MAX_COMMAND];
-    FILE *file;
-    char *line = NULL;
-    size_t len = 0;
-    int i = 0;
-    ssize_t read;
 
-    if (argc != 2)
-    {
-        fprintf(stderr,  "USAGE: monty file\n");
-        exit(EXIT_FAILURE);
-    }
-    
-    file = fopen(argv[1], "r");
-    if (!file)
-    {
-        fprintf(stderr,"Error: Can't open file <%s>", argv[1]);
-        exit(EXIT_FAILURE);
-    }
+	FILE *file;
+	char *line = NULL;
+	size_t len = 0;
+	int counter = 0;
+	ssize_t read;
+	stack_t *stack = NULL;
 
-    while ((read = getline(&line, &len, file)) != -1)
-    {
-        commands[i] = line;
-        i++;
-    }
+	if (argc != 2)
+	{
+		fprintf(stderr,  "USAGE: monty file\n");
+		exit(EXIT_FAILURE);
+	}
 
-    commands[i] = NULL;
-    fclose(file);
+	file = fopen(argv[1], "r");
+	if (!file)
+	{
+		fprintf(stderr, "Error: Can't open file <%s>\n", argv[1]);
+		exit(EXIT_FAILURE);
+	}
+	bus.file = file;
 
-    for (i = 0; commands[i] != NULL; i++)
-    {
-        printf("%s", commands[i]);
-    }
+	while ((read = getline(&line, &len, file)) != -1)
+	{
+		counter++;
+		line = handle_comment(line);
+		bus.line = line;
+		execute(line, &stack, counter);
+	}
 
-    if (line)
-        free(line);
-    return 0;
+	if (fclose(file) != 0)
+	{
+		fprintf(stderr, "Error: Failed to close the file.\n");
+		free_stack(stack);
+		cleanup_and_exit();
+	}
+	return (0);
 }
+

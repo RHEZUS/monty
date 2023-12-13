@@ -1,0 +1,83 @@
+#include "monty.h"
+
+bus_t bus = {NULL, NULL, NULL, 0};
+
+/**
+ * main - entry point
+ * @argc: the number of arguments
+ * @argv: the files containing the command
+ * Return: always 0 
+ */
+int main(int argc, char const *argv[])
+{
+
+    FILE *file;
+    char *line = NULL;
+    size_t len = 0;
+    int counter = 0;
+    ssize_t read;
+    stack_t *stack = NULL;
+
+    if (argc != 2)
+    {
+        fprintf(stderr,  "USAGE: monty file\n");
+        exit(EXIT_FAILURE);
+    }
+    
+    file = fopen(argv[1], "r");
+    if (!file)
+    {
+        fprintf(stderr,"Error: Can't open file <%s>", argv[1]);
+        exit(EXIT_FAILURE);
+    }
+    bus.file = file;
+
+    while ((read = getline(&line, &len, file)) != -1)
+    {
+        /*printf("%s", line);*/
+        counter++;
+        bus.line = line;
+        execute(line, &stack, counter);
+    }
+
+    fclose(file);
+    if (line)
+        free(line);
+
+    return 0;
+}
+
+/*
+int main(int argc, char const *argv[])
+{
+    FILE *file;
+    char line[300];
+    int counter = 0;
+    stack_t *stack = NULL;
+
+    if (argc != 2)
+    {
+        fprintf(stderr,  "USAGE: monty file\n");
+        exit(EXIT_FAILURE);
+    }
+    
+    file = fopen(argv[1], "r");
+    if (!file)
+    {
+        fprintf(stderr,"Error: Can't open file <%s>", argv[1]);
+        exit(EXIT_FAILURE);
+    }
+    bus.file = file;
+
+    while (fgets(line, sizeof(line), file) != NULL)
+    {
+        counter++;
+        bus.line = line;
+        execute(line, &stack, counter);
+    }
+
+    fclose(file);
+    return 0;
+}
+
+*/
