@@ -18,7 +18,8 @@ int execute(char *line, stack_t **stack, unsigned int count)
 		{"sub", sub}, {"f_div", f_div},
 		{"mul", mul}, {"mod", mod},
 		{"nop", nop}, {"pchar",  pchar},
-		{"pstr", pstr},
+		{"pstr", pstr}, {"stack", f_stack},
+		{"queue", queue},
 		{NULL, NULL},
 	};
 	char *command = strtok(line, " \n\t");

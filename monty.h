@@ -66,6 +66,7 @@ extern bus_t bus;
 /******* FUNCTIONS *******/
 int execute(char *line, stack_t **stack, unsigned int line_number);
 void add_node(stack_t **head, int n);
+void add_node_end(stack_t **stack, int n);
 void cleanup_and_exit(void);
 void free_stack(stack_t *head);
 char *handle_comment(char *str);
@@ -83,5 +84,6 @@ void mul(stack_t **stack, unsigned int line_number);
 void mod(stack_t **stack, unsigned int line_number);
 void pchar(stack_t **stack, unsigned int line_number);
 void pstr(stack_t **stack, unsigned int line_number);
-
+void queue(stack_t **stack, unsigned int line_number);
+void f_stack(stack_t **stack, unsigned int line_number);
 #endif

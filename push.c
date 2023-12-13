@@ -37,6 +37,6 @@ void push(stack_t **stack, unsigned int line_number)
 		add_node(stack, n);
 	else
 		printf("It is a que");
-	/*add_queue(stack, n);*/
+	add_node_end(stack, n);
 }
 
