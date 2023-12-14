@@ -19,5 +19,5 @@ void pstr(stack_t **stack, unsigned int line_number)
 		printf("%c", head->n);
 		head = head->next;
 	}
-	printf('\n');
+	printf("\n");
 }
