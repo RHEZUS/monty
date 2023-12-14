@@ -10,7 +10,7 @@
 void mod(stack_t **stack, unsigned int line_number)
 {
 	stack_t *head = *stack;
-	int len = 0, sum = 0;
+	int len = 0, result = 0;
 
 
 	while (head)
@@ -38,8 +38,8 @@ void mod(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	sum = head->next->n % head->n;
-	head->next->n = sum;
+	result = head->next->n % head->n;
+	head->next->n = result;
 	*stack = head->next;
 	free(head);
 }
