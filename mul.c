@@ -30,6 +30,7 @@ void mul(stack_t **stack, unsigned int line_number)
 	sum = head->n * head->next->n;
 	head->next->n = sum;
 	*stack = head->next;
+	(*stack)->prev = NULL;
 	free(head);
 }
 
