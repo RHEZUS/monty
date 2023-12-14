@@ -29,7 +29,7 @@ void mul(stack_t **stack, unsigned int line_number)
 	head = *stack;
 	sum = head->n * head->next->n;
 	head->next->n = sum;
-	*stack = head;
+	*stack = head->next;
 	free(head);
 }
 
