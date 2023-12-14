@@ -9,10 +9,10 @@
 
 void _div(stack_t **stack, unsigned int line_number)
 {
-	stack_t *head = *stack;
+	stack_t *head;
 	int len = 0, result = 0;
 
-
+	head = *stack;
 	while (head)
 	{
 		head = head->next;
@@ -27,6 +27,7 @@ void _div(stack_t **stack, unsigned int line_number)
 		free(bus.line);
 		exit(EXIT_FAILURE);
 	}
+
 	head = *stack;
 
 	if (head->next->n == 0)
@@ -38,7 +39,7 @@ void _div(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	result = head->next->n % head->n;
+	result = head->next->n / head->n;
 	head->next->n = result;
 	*stack = head->next;
 	free(head);
