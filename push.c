@@ -9,7 +9,7 @@
 
 void push(stack_t **stack, unsigned int line_number)
 {
-	int n, j = 0, flag = 0;
+	int n, j = 0, is_digit = 0;
 
 	if (bus.arg)
 	{
@@ -18,9 +18,9 @@ void push(stack_t **stack, unsigned int line_number)
 		for (; bus.arg[j] != '\0'; j++)
 		{
 			if (bus.arg[j] > 57 || bus.arg[j] < 48)
-				flag = 1;
+				is_digit = 1;
 		}
-		if (flag == 1)
+		if (is_digit == 1)
 		{
 			fprintf(stderr, "L%d: usage: push integer\n", line_number);
 			free_stack(*stack);
