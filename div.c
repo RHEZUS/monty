@@ -9,10 +9,9 @@
 
 void _div(stack_t **stack, unsigned int line_number)
 {
-	stack_t *head;
+	stack_t *head = *stack;
 	int len = 0, result = 0;
 
-	head = *stack;
 	while (head)
 	{
 		head = head->next;
