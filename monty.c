@@ -14,8 +14,8 @@ int main(int argc, char const *argv[])
 	FILE *file;
 	char *line = NULL;
 	size_t len = 0;
-	int counter = 0;
-	ssize_t read;
+	unsigned int counter = 0;
+	ssize_t read = 1;
 	stack_t *stack = NULL;
 
 	if (argc != 2)
@@ -27,25 +27,24 @@ int main(int argc, char const *argv[])
 	file = fopen(argv[1], "r");
 	if (!file)
 	{
-		fprintf(stderr, "Error: Can't open file <%s>\n", argv[1]);
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
 	bus.file = file;
 
-	while ((read = getline(&line, &len, file)) != -1)
+	while (read > 0)
 	{
-		counter++;
-		line = handle_comment(line);
+		line = NULL;
+		read = getline(&line, &len, file);
 		bus.line = line;
-		execute(line, &stack, counter);
+		counter++;
+		if (read > 0)
+			execute(line, &stack, counter);
+		free(line);
 	}
 
-	if (fclose(file) != 0)
-	{
-		fprintf(stderr, "Error: Failed to close the file.\n");
-		free_stack(stack);
-		cleanup_and_exit();
-	}
+	free_stack(stack);
+	fclose(bus.file);
 	return (0);
 }
 

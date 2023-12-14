@@ -1,27 +1,28 @@
 #include "monty.h"
 /**
  * add_node - add node to the head stack
- * @head: head of the stack
- * @n: new_value
- * Return: no return
+ * @stack: the head of the stack
+ * @n: the file's line
+ * Return: nothing
 */
-void add_node(stack_t **head, int n)
+void add_node(stack_t **stack, int n)
 {
+	stack_t *new_node = malloc(sizeof(stack_t));
 
-	stack_t *new_node, *h;
-
-	h = *head;
-	new_node = malloc(sizeof(stack_t));
 	if (new_node == NULL)
 	{
-		printf("Error\n");
-		exit(0);
+		fprintf(stderr, "Error: Unable to allocate memory\n");
+		exit(EXIT_FAILURE);
 	}
-	if (h)
-		h->prev = new_node;
+
 	new_node->n = n;
-	new_node->next = *head;
+	new_node->next = *stack;
 	new_node->prev = NULL;
-	*head = new_node;
+
+	if (*stack != NULL)
+		(*stack)->prev = new_node;
+
+	*stack = new_node;
 }
+
 

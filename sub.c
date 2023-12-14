@@ -1,9 +1,9 @@
 #include "monty.h"
 
 /**
- * sub - subd the top two elements of the stack.
- * @stack: stack head
- * @line_number: line_number
+ * sub - subtracts the top two elements of the stack.
+ * @stack: the head of the stack
+ * @line_number: the file's line
  * Return: nothing
  */
 
@@ -22,7 +22,9 @@ void sub(stack_t **stack, unsigned int line_number)
 	{
 		fprintf(stderr, "L%d: can't sub, stack too short,\n", line_number);
 		free_stack(*stack);
-		cleanup_and_exit();
+		fclose(bus.file);
+		free(bus.line);
+		exit(EXIT_FAILURE);
 	}
 	head = *stack;
 	sum = head->next->n - head->n;

@@ -1,18 +1,18 @@
 #include "monty.h"
 
 /**
- * f_div - divs the top two elements of the stack.
+ * _div - divs the top two elements of the stack.
  * @stack: stack head
  * @line_number: line_number
  * Return: nothing
  */
 
-void f_div(stack_t **stack, unsigned int line_number)
+void _div(stack_t **stack, unsigned int line_number)
 {
-	stack_t *head = *stack;
-	int len = 0, sum = 0;
+	stack_t *head;
+	int len = 0, result = 0;
 
-
+	head = *stack;
 	while (head)
 	{
 		head = head->next;
@@ -23,7 +23,9 @@ void f_div(stack_t **stack, unsigned int line_number)
 	{
 		fprintf(stderr, "L%d: can't div, stack too short\n", line_number);
 		free_stack(*stack);
-		cleanup_and_exit();
+		fclose(bus.file);
+		free(bus.line);
+		exit(EXIT_FAILURE);
 	}
 
 	head = *stack;
@@ -32,11 +34,13 @@ void f_div(stack_t **stack, unsigned int line_number)
 	{
 		fprintf(stderr, "L%d: division by zero\n", line_number);
 		free_stack(*stack);
-		cleanup_and_exit();
+		fclose(bus.file);
+		free(bus.line);
+		exit(EXIT_FAILURE);
 	}
 
-	sum = head->next->n / head->n;
-	head->next->n = sum;
+	result = head->next->n / head->n;
+	head->next->n = result;
 	*stack = head->next;
 	free(head);
 }

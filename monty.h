@@ -10,8 +10,8 @@
 #include <ctype.h>
 
 #define UNUSED(x) (void)(x)
-#define MAX_COMMAND 250
-#define MAX_LINE_LENGTH 1024
+#define STACK 0
+#define QUEUE 1
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -49,7 +49,7 @@ typedef struct instruction_s
  * @arg: value
  * @file: pointer to monty file
  * @line: line content
- * @is_stack: flag change stack <-> queue
+ * @status: flag change stack <-> queue
  * Description: carries values through the program
  */
 typedef struct bus_s
@@ -57,7 +57,7 @@ typedef struct bus_s
 	char *arg;
 	FILE *file;
 	char *line;
-	int is_stack;
+	int status;
 } bus_t;
 
 extern bus_t bus;
@@ -66,9 +66,11 @@ extern bus_t bus;
 /******* FUNCTIONS *******/
 int execute(char *line, stack_t **stack, unsigned int line_number);
 void add_node(stack_t **head, int n);
+void add_node_end(stack_t **stack, int n);
 void cleanup_and_exit(void);
 void free_stack(stack_t *head);
 char *handle_comment(char *str);
+
 void nop(stack_t **stack, unsigned int line_number);
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
@@ -77,8 +79,14 @@ void pop(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);
 void sub(stack_t **stack, unsigned int line_number);
-void f_div(stack_t **stack, unsigned int line_number);
+void _div(stack_t **stack, unsigned int line_number);
 void mul(stack_t **stack, unsigned int line_number);
 void mod(stack_t **stack, unsigned int line_number);
+void rotl(stack_t **stack, unsigned int line_number);
+void rotr(stack_t **stack, unsigned int line_number);
+void pchar(stack_t **stack, unsigned int line_number);
+void pstr(stack_t **stack, unsigned int line_number);
+void queue(stack_t **stack, unsigned int line_number);
+void _stack(stack_t **stack, unsigned int line_number);
 
 #endif

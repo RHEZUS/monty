@@ -2,8 +2,8 @@
 
 /**
  * mod - mods the top two elements of the stack.
- * @stack: stack head
- * @line_number: line_number
+ * @stack: the head of the stack
+ * @line_number: the file's line
  * Return: nothing
  */
 
@@ -23,7 +23,9 @@ void mod(stack_t **stack, unsigned int line_number)
 	{
 		fprintf(stderr, "L%d: can't mod, stack too short\n", line_number);
 		free_stack(*stack);
-		cleanup_and_exit();
+		fclose(bus.file);
+		free(bus.line);
+		exit(EXIT_FAILURE);
 	}
 	head = *stack;
 
@@ -31,7 +33,9 @@ void mod(stack_t **stack, unsigned int line_number)
 	{
 		fprintf(stderr, "L%d: division by zero\n", line_number);
 		free_stack(*stack);
-		cleanup_and_exit();
+		fclose(bus.file);
+		free(bus.line);
+		exit(EXIT_FAILURE);
 	}
 
 	sum = head->next->n % head->n;

@@ -2,8 +2,8 @@
 
 /**
  * swap - swaps the top two elements of the stack.
- * @stack: stack head
- * @line_number: line_number
+ * @stack: the head of the stack
+ * @line_number: the file's line
  * Return: nothing
  */
 
@@ -21,7 +21,9 @@ void swap(stack_t **stack, unsigned int line_number)
 	{
 		fprintf(stderr, "L%d: can't swap, stack too short", line_number);
 		free_stack(*stack);
-		cleanup_and_exit();
+		fclose(bus.file);
+		free(bus.line);
+		exit(EXIT_FAILURE);
 	}
 
 	h = *stack;
