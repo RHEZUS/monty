@@ -15,7 +15,7 @@ int execute(char *line, stack_t **stack, unsigned int count)
 		{"push", push}, {"pall", pall},
 		{"pint", pint}, {"pop", pop},
 		{"swap", swap}, {"add", add},
-		{"sub", sub}, {"f_div", _div},
+		{"sub", sub}, {"div", _div},
 		{"mul", mul}, {"mod", mod},
 		{"nop", nop}, {"pchar",  pchar},
 		{"pstr", pstr}, {"stack", _stack},

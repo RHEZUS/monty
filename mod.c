@@ -9,10 +9,10 @@
 
 void mod(stack_t **stack, unsigned int line_number)
 {
-	stack_t *head = *stack;
-	int len = 0, sum = 0;
+	stack_t *head;
+	int len = 0, result = 0;
 
-
+	head = *stack;
 	while (head)
 	{
 		head = head->next;
@@ -27,9 +27,10 @@ void mod(stack_t **stack, unsigned int line_number)
 		free(bus.line);
 		exit(EXIT_FAILURE);
 	}
+
 	head = *stack;
 
-	if (head->next->n == 0)
+	if (head->n == 0)
 	{
 		fprintf(stderr, "L%d: division by zero\n", line_number);
 		free_stack(*stack);
@@ -38,8 +39,8 @@ void mod(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	sum = head->next->n % head->n;
-	head->next->n = sum;
+	result = head->next->n % head->n;
+	head->next->n = result;
 	*stack = head->next;
 	free(head);
 }
