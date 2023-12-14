@@ -17,11 +17,7 @@ void pchar(stack_t **stack, unsigned int line_number)
 		free(bus.line);
 		exit(EXIT_FAILURE);
 	}
-	if ((*stack)->n > 0 && (*stack)->n <= 127)
-	{
-		printf("%c\n", (*stack)->n);
-	}
-	else
+	if ((*stack)->n < 0 || (*stack)->n > 127)
 	{
 		fprintf(stderr, "L%u: can't pchar, value out of range\n", line_number);
 		free_stack(*stack);
@@ -29,6 +25,8 @@ void pchar(stack_t **stack, unsigned int line_number)
 		free(bus.line);
 		exit(EXIT_FAILURE);
 	}
+
+	printf("%c\n", (*stack)->n);
 
 }
 
