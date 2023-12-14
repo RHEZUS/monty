@@ -9,16 +9,15 @@
 
 void _div(stack_t **stack, unsigned int line_number)
 {
-	int length = 0, result;
-	stack_t *current = *stack;
-	
-	while (current)
+	stack_t *head = *stack;
+	int len = 0, result;
+
+	while (head)
 	{
-		current = current->next;
-		length++;
+		head = head->next;
+		len++;
 	}
-	
-	if (length < 2)
+	if (len < 2)
 	{
 		fprintf(stderr, "L%d: can't mod, stack too short\n", line_number);
 		fclose(bus.file);
@@ -26,9 +25,8 @@ void _div(stack_t **stack, unsigned int line_number)
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
-
-	current = *stack;
-	if (current->n == 0)
+	head = *stack;
+	if (head->n == 0)
 	{
 		fprintf(stderr, "L%d: division by zero\n", line_number);
 		fclose(bus.file);
@@ -36,11 +34,9 @@ void _div(stack_t **stack, unsigned int line_number)
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
-
-	result = current->next->n % current->n;
-	current->next->n = result;
-
-	*stack = current->next;
-	free(current);
+	result = head->next->n % head->n;
+	head->next->n = result;
+	*stack = head->next;
+	free(head);
 }
 
