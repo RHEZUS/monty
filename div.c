@@ -40,6 +40,7 @@ void _div(stack_t **stack, unsigned int line_number)
 
 	result = head->next->n / head->n;
 	head->next->n = result;
+	*stack = head->next;
 	free(head);
 }
 
